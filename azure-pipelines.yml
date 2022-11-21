@@ -17,15 +17,6 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'Build Release'
   
-
-- task: DotNetCoreCLI@2
-  displayName: 'Running Tests'
-  inputs:
-    command: test
-    projects: '**/*Tests/*.csproj'
-    arguments: '--configuration $(buildConfiguration)'
-    
-
 - task: UseDotNet@2
   displayName: .NET Version
   inputs:
@@ -42,13 +33,21 @@ steps:
       dotnet workload install android ios maccatalyst tvos macos maui wasm-tools --source https://aka.ms/dotnet6/nuget/index.json --source https://api.nuget.org/v3/index.json
 
 - task: DotNetCoreCLI@2
+  displayName: 'Running Tests'
+  inputs:
+    command: test
+    projects: '**/*Tests/*.csproj'
+    arguments: '--configuration $(buildConfiguration)'
+    
+
+- task: DotNetCoreCLI@2
   displayName: 'Publishing'
   inputs:
     command: publish
     publishWebProjects: true
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: true
-
+    
 - task: PublishBuildArtifacts@1
   displayName: 'Publishing to Aritifact'
   inputs:
