@@ -48,4 +48,56 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiFont Remove="Resources\Fonts\fa-regular-400.ttf" />
+	  <MauiFont Remove="Resources\Fonts\fa-solid-900.ttf" />
+	  <MauiFont Remove="Resources\Fonts\OpenSans-Regular.ttf" />
+	  <MauiFont Remove="Resources\Fonts\OpenSans-Semibold.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\fa-regular-400.ttf" />
+	  <None Remove="Resources\Fonts\fa-solid-900.ttf" />
+	  <None Remove="Resources\Images\elevator.png" />
+	  <None Remove="Resources\Images\locked.png" />
+	  <None Remove="Resources\Images\user.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="Resources\Fonts\fa-regular-400.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <Content Include="Resources\Fonts\fa-solid-900.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Assets\Fonts\" />
+	  <Folder Include="Assets\Images\" />
+	  <Folder Include="Components\" />
+	  <Folder Include="MVVM\Cores\" />
+	  <Folder Include="MVVM\Models\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="Resources\Fonts\OpenSans-Regular.ttf" />
+	  <Resource Include="Resources\Fonts\OpenSans-Semibold.ttf">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Resource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MVVM\Views\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
